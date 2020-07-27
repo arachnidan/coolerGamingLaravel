@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@inicio' );
+
+Route::get('registrarse', 'PagesController@registrarse')->name('registrarse');
+
+Route::post('/', 'PagesController@nuevoRegistro') ->name('usuario.registrarse');
+
+Route::get('juegos/{numero?}', 'PagesController@detalleJuego' )->where('id', '[0-9]+');
+
+Route::view('detalle','juego' , ['numero'=>125]);
