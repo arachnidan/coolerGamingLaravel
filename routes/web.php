@@ -13,16 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('juegos');
-});
+Route::get('/', 'PagesController@inicio' );
 
-Route::get('registrarse', function () {
-    return view('registrarse');
-})->name('registrarse');
+Route::get('registrarse', 'PagesController@registrarse')->name('registrarse');
 
-Route::get('juegos/{numero?}', function ($numero = 'sin numero') {
-    return 'Estas en el juego: '.$numero;
-})->where('id', '[0-9]+');
+Route::post('/', 'PagesController@nuevoRegistro') ->name('usuario.registrarse');
+
+Route::get('juegos/{numero?}', 'PagesController@detalleJuego' )->where('id', '[0-9]+');
 
 Route::view('detalle','juego' , ['numero'=>125]);

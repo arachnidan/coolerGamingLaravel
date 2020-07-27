@@ -2,7 +2,8 @@
 
 @section('seccion')
 
-<form>
+<form action="{{ route('usuario.registrarse')}}" method="POST">
+    @csrf
     <div class="row">
       <div class="col">
       <label for="exampleInputPassword1">Usuario</label>
